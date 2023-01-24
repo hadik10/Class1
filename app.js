@@ -17,10 +17,10 @@ app.get('/show', (req, res)=> {
 
 })
 
-app.get('ejs', (req, res)=> {
+app.get('/ejs', (req, res)=> {
 
     //ejs stuff goes here.
-    
+
     //use res.render to load up an ejs view file
     res.render('index');
 })
