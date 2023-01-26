@@ -8,7 +8,13 @@ let myName = 'Hardik';
 
 app.get("/", function (req, res) {
    //res.sendFile(__dirname + "/example");
-    res.send(`<h3>Hi, ${myName} </h3>`);
+  
+   /*let result = await res.send(`<h3> Hi, ${myName} </h3>`);
+    console.log(myName);
+
+   res.send(`<h3>Hi, ${myName} </h3>`);
+*/
+
 });
 
 app.get('/show', (req, res)=> {
@@ -21,8 +27,16 @@ app.get('/ejs', (req, res)=> {
 
     //ejs stuff goes here.
 
+    console.log("in /ejs before render:", myName);
+    
     //use res.render to load up an ejs view file
-    res.render('index');
+    res.render('index', { myName: myName }); //left one is ejs, right side is node land
+    console.log("after res render /ejs", myName);
+})
+
+app.get('/name',(req,res)=> {
+
+    console.log("in get to slash name:", req.query.ejsFormName);
 })
 
 app.listen(3000, function () {
